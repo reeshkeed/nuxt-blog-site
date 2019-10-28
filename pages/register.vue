@@ -56,6 +56,8 @@ import Notification from '~/components/Notification';
 import { mapGetters } from 'vuex';
 
 export default {
+  middleware: 'guest',
+  
   components: {
     Notification,
   },
