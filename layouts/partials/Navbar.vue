@@ -9,9 +9,17 @@
       </div>
       <div class="w-full lg:flex lg:items-right lg:w-auto">
         <div>
-          <a href="#" class="inline-block text-sm px-5 py-3 leading-none border bg-indigo-400 rounded text-white border-indigo-400 hover:border-transparent hover:text-indigo-400 hover:bg-white mt-4 lg:mt-0">Login</a>
-          <a href="#" class="inline-block text-sm px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-400 hover:bg-white mt-4 lg:mt-0">Register</a>
-          <a href="#" class="inline-block text-sm px-5 py-3 leading-none rounded text-indigo-600 hover:text-white mt-4 lg:mt-0">Logout</a>
+          <template v-if="!isAuthenticated">
+            <nuxt-link :to="{ name: 'login' }" class="inline-block text-sm px-5 py-3 leading-none border bg-indigo-400 rounded text-white border-indigo-400 hover:border-transparent hover:text-indigo-400 hover:bg-white mt-4 lg:mt-0">Login</nuxt-link>
+            <nuxt-link :to="{ name: 'register' }" class="inline-block text-sm px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-400 hover:bg-white mt-4 lg:mt-0">Register</nuxt-link>
+          </template>
+
+          <template v-if="isAuthenticated">
+            <div class="flex flex-row">
+              <nuxt-link :to="{ name: '/' }" class="font-bold inline-block px-5 py-3 leading-none rounded text-white hover:text-indigo-200 mt-4 lg:mt-0">{{ loggedInUser.name }}</nuxt-link>
+              <a  @click.prevent="logout" href="#" class="inline-block text-sm px-5 py-3 leading-none rounded text-indigo-600 hover:text-white mt-4 lg:mt-0">Logout</a>
+            </div>
+          </template>
         </div>
       </div>
     </nav>
@@ -19,7 +27,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
+  methods: {
+    async logout() {
+      await this.$auth.logout();
+    },
+  },
+
+  computed: {
+    ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  }
 }
 </script>
 
