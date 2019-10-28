@@ -13,6 +13,8 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/auth": "^4.8.4",
+    "@nuxtjs/axios": "^5.8.0",
     "dayjs": "^1.8.16",
     "dayjs-ext": "^2.2.0",
     "nuxt": "^2.0.0"

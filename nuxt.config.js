@@ -19,7 +19,7 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  
+
   // css file.
   css: [
     '~assets/css/tailwind.css',
@@ -54,7 +54,25 @@ module.exports = {
 
   modules: [
     'nuxt-purgecss',
+    '@nuxtjs/auth',
+    '@nuxtjs/axios'
   ],
 
-  purgeCSS: {}
+  purgeCSS: {},
+
+  axios: {
+    baseURL: 'http://127.0.0.1:8000/api'
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'token' },
+          user: { url: 'user', method: 'get', propertyName: 'user' },
+          logout: false
+        }
+      }
+    }
+  },
 }
