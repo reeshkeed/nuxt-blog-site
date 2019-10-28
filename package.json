@@ -13,6 +13,8 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "dayjs": "^1.8.16",
+    "dayjs-ext": "^2.2.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
