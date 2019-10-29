@@ -102,6 +102,17 @@ export default {
       this.title = '';
       this.description = '';
     },
+
+    async deleteArticle(getId) {
+      if (!this.$auth.loggedIn) {
+        this.$router.push('login');
+      }
+
+      await this.$axios.delete(`articles/${getId}`);
+
+      const index = this.article.findIndex((article) => article.id == getId);
+      this.article.splice(index, 1);
+    },
   }
 }
 </script>
