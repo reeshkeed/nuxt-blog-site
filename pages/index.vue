@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Articles from '~/layouts/partials/Article';
+import Articles from '~/layouts/partials/Articles';
 
 export default {
   components: {
