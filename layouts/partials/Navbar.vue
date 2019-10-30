@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <nav class="flex items-center justify-between flex-wrap bg-indigo-800 p-5 fixed top-0 left-0 right-0">
+    <nav class="flex flex-row items-center justify-between bg-indigo-800 p-5 fixed top-0 left-0 right-0">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <nuxt-link :to="{ name: 'index' }" class="flex flex-row">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 302.7 302.7">
@@ -10,16 +10,16 @@
         </nuxt-link>
       </div>
       <div class="w-full lg:flex lg:items-right lg:w-auto">
-        <div>
+        <div class="float-right">
           <template v-if="!isAuthenticated">
-            <nuxt-link :to="{ name: 'login' }" class="inline-block text-sm px-5 py-3 leading-none border bg-indigo-400 rounded text-white border-indigo-400 hover:border-transparent hover:text-indigo-400 hover:bg-white mt-4 lg:mt-0">Login</nuxt-link>
-            <nuxt-link :to="{ name: 'register' }" class="inline-block text-sm px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-400 hover:bg-white mt-4 lg:mt-0">Register</nuxt-link>
+            <nuxt-link :to="{ name: 'login' }" class="inline-block text-sm px-5 py-3 leading-none border bg-indigo-400 rounded text-white border-indigo-400 hover:border-transparent hover:text-indigo-400 hover:bg-white">Login</nuxt-link>
+            <nuxt-link :to="{ name: 'register' }" class="inline-block text-sm px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-indigo-400 hover:bg-white">Register</nuxt-link>
           </template>
 
           <template v-if="isAuthenticated">
             <div class="flex flex-row">
-              <nuxt-link :to="{ name: 'profile' }" class="font-bold inline-block px-5 py-3 leading-none rounded text-white hover:text-indigo-200 mt-4 lg:mt-0">{{ loggedInUser.name }}</nuxt-link>
-              <a  @click.prevent="logout" href="#" class="inline-block text-sm px-5 py-3 leading-none rounded text-indigo-600 hover:text-white mt-4 lg:mt-0">Logout</a>
+              <nuxt-link :to="{ name: 'profile' }" class="font-bold inline-block px-5 py-3 leading-none rounded text-white hover:text-indigo-200">{{ loggedInUser.name }}</nuxt-link>
+              <a  @click.prevent="logout" href="#" class="inline-block text-sm px-5 py-3 leading-none rounded text-indigo-600 hover:text-white">Logout</a>
             </div>
           </template>
         </div>
